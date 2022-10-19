@@ -7,7 +7,11 @@ on:
 jobs:
   say-hello:
     runs-on: ubuntu-latest
-       steps:
+    steps:
+      - name: "Echo Greeting"
+        run: "echo 'Hei på deg GitHub Actions!'"
+      - name: "Echo Goodnight"
+        run: "echo 'Natta!'"
       - name: "Echo Test"
-        run: "echo 'Hei hei hallo!'"
- 
+        run: "echo 'Hei hallo TEST!'"
+  
