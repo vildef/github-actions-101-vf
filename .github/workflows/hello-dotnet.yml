@@ -1,0 +1,28 @@
+name: "Hello .NET"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "Setup .NET Core SDK"
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: "6.0.x"
+
+      - name: "Print .NET CLI version"
+        run: dotnet --version
+
+      - name: "Restore tests"
+        run: dotnet restore Notes.Api.Test/Notes.Api.Test.csproj
+
+      - name: "Build tests"
+        run: dotnet build --no-restore --configuration Release Notes.Api.Test/Notes.Api.Test.csproj
+
+      - name: "Run tests"
+       run: dotnet test --no-build --configuration Release Notes.Api.Test/Notes.Api.Test.csproj
