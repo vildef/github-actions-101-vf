@@ -25,4 +25,9 @@ jobs:
         run: dotnet build --no-restore --configuration Release Notes.Api.Test/Notes.Api.Test.csproj
 
       - name: "Run tests"
-       run: dotnet test --no-build --configuration Release Notes.Api.Test/Notes.Api.Test.csproj
+        run: dotnet test \
+                        --no-build \
+                        --configuration Release \
+                        --verbosity normal \
+                        --logger trx \
+                        Notes.Api.Test/Notes.Api.Test.csproj
