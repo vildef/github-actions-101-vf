@@ -29,3 +29,10 @@ jobs:
                         --logger trx \
                         $Notes.Api.Test
                     
+      - name: "Report Tests"
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: test-report
+          path: Notes.Api.Test/TestResults/*.trx
+          reporter: dotnet-trx
